@@ -39,8 +39,9 @@ export default {
         reject(e);
         return;
       }
-      DeviceEventEmitter.once('onGetGeoCodeResult', resp => {
+      const subscription = DeviceEventEmitter.once('onGetGeoCodeResult', resp => {
         resolve(resp);
+        subscription.remove();
       });
     });
   },
@@ -56,8 +57,9 @@ export default {
         reject(e);
         return;
       }
-      DeviceEventEmitter.once('onGetReverseGeoCodeResult', resp => {
+      const subscription = DeviceEventEmitter.once('onGetReverseGeoCodeResult', resp => {
         resolve(resp);
+        subscription.remove();
       });
     });
   },
@@ -70,10 +72,11 @@ export default {
         reject(e);
         return;
       }
-      DeviceEventEmitter.once('onGetReverseGeoCodeResult', resp => {
+      const subscription = DeviceEventEmitter.once('onGetReverseGeoCodeResult', resp => {
         resp.latitude = parseFloat(resp.latitude);
         resp.longitude = parseFloat(resp.longitude);
         resolve(resp);
+        subscription.remove();
       });
     });
   },
@@ -92,15 +95,17 @@ export default {
         reject(e);
         return;
       }
-      DeviceEventEmitter.once('onGetCurrentLocationPosition', resp => {
+      const subscription = DeviceEventEmitter.once('onGetCurrentLocationPosition', resp => {
         if (resp.errcode) {
           reject(resp)
+          subscription.remove();
           return;
         }
         if (!resp.address) {
           resp.address = `${resp.province} ${resp.city} ${resp.district} ${resp.streetName}`;
         }
         resolve(resp);
+        subscription.remove();
       });
     });
   },

@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "react-native-baidu-map"
-  s.version      = "1.0.37"
+  s.version      = "1.0.38"
   s.summary      = "Baidu Map for React Native"
 
   s.description  = <<-DESC
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   # s.authors            = { "lovebing" => "tangyangjian@gmail.com" }
   # s.social_media_url   = "https://github.com/lovebing"
 
-  s.platform     = :ios, "9.0"
+  s.platform     = :ios, "12.4"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -41,7 +41,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :http => "http://repo.codeboot.net/pod/http/react-native-baidu-map/1.0.37/source.zip" }
+  s.source       = { :https => "https://github.com/likenow/react-native-baidu-map/tree/master/ios" }
 
   s.source_files  = "ios/RCTBaiduMap/**/*.{h,m}"
   s.exclude_files = ""
@@ -56,6 +56,6 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   s.dependency "React"
-  s.dependency 'BaiduMapKit', '4.2.0'
-  s.dependency 'BMKLocationKit', '1.3.0.2'
+  s.dependency 'BaiduMapKit', '~> 6.5.3'
+  s.dependency 'BMKLocationKit', '~> 2.0.4'
 end
